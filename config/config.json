@@ -1,0 +1,45 @@
+{
+    "router": {
+        "useAppMiddlewares": {
+            "appMiddlewareAlias": true
+        },
+        "middlewares": {
+            "firstMiddlewareAlias": "App\\Middleware\\Route\\RouteMiddlewares:myMiddleware",
+            "secondMiddlewareAlias": "App\\Middleware\\Route\\RouteMiddlewares:myMiddleware2",
+            "appMiddlewareAlias": "App\\Middleware\\App\\AppMiddlewareClass"
+        },
+        "notFoundHandler": "App\\RouteMiddlewares:notFound",
+        "routes": [
+            {
+                "middlewares": [
+                    "firstMiddlewareAlias"
+                ],
+                "method": "GET",
+                "route": "/",
+                "handler": "App\\Application:hello",
+                "children": {
+                    "middlewares": [
+                        "firstMiddlewareAlias",
+                        "secondMiddlewareAlias"
+                    ],
+                    "route": ":user",
+                    "handler": "App\\Application:helloUser",
+                    "children": {
+                        "middlewares": [],
+                        "route": "static/profile",
+                        "handler": "App\\Application:profile"
+                    }
+                }
+            },
+            {
+                "middlewares": [
+                    "firstMiddlewareAlias"
+                ],
+                "method": "GET",
+                "route": "/:user/static",
+                "handler": "App\\Application:helloStatic"
+            }
+        ]
+    },
+    "modules": {}
+}
