@@ -38,8 +38,20 @@
                 "method": "GET",
                 "route": "/:user/static",
                 "handler": "App\\Application:helloStatic"
+            },
+            {
+                "middlewares": [],
+                "method": "POST",
+                "route": "/module/auth/login",
+                "handler": "ZXC\\Modules\\Auth\\Middlewares\\Authenticate\\Authenticate:login"
             }
         ]
     },
-    "modules": {}
+    "modules": {
+        "Auth": {
+            "class": "ZXC\\Modules\\Auth\\Auth",
+            "defer": false,
+            "options": {}
+        }
+    }
 }
