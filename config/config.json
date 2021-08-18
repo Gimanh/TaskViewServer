@@ -1,12 +1,15 @@
 {
     "router": {
+        "enableCors": true,
         "useAppMiddlewares": {
-            "appMiddlewareAlias": true
+            "appMiddlewareAlias": true,
+            "cors": true
         },
         "middlewares": {
             "firstMiddlewareAlias": "App\\Middleware\\Route\\RouteMiddlewares:myMiddleware",
             "secondMiddlewareAlias": "App\\Middleware\\Route\\RouteMiddlewares:myMiddleware2",
-            "appMiddlewareAlias": "App\\Middleware\\App\\AppMiddlewareClass"
+            "appMiddlewareAlias": "App\\Middleware\\App\\AppMiddlewareClass",
+            "cors": "App\\Middleware\\App\\Cors"
         },
         "notFoundHandler": "App\\RouteMiddlewares:notFound",
         "routes": [
@@ -52,6 +55,21 @@
             "class": "ZXC\\Modules\\Auth\\Auth",
             "defer": false,
             "options": {}
+        },
+        "Cors": {
+            "class": "ZXC\\Modules\\Cors\\Cors",
+            "defer": false,
+            "options": {
+                "origin": "http://localhost:9080",
+                "methods": [
+                    "POST",
+                    "GET",
+                    "OPTIONS"
+                ],
+                "credentials": true,
+                "maxAge": 86400,
+                "headers": ["content-type"]
+            }
         }
     }
 }
