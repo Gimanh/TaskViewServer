@@ -9,7 +9,7 @@
             "firstMiddlewareAlias": "App\\Middleware\\Route\\RouteMiddlewares:myMiddleware",
             "secondMiddlewareAlias": "App\\Middleware\\Route\\RouteMiddlewares:myMiddleware2",
             "appMiddlewareAlias": "App\\Middleware\\App\\AppMiddlewareClass",
-            "cors": "App\\Middleware\\App\\Cors"
+            "cors": "ZXC\\Modules\\Cors\\Middlewares\\Cors"
         },
         "notFoundHandler": "App\\RouteMiddlewares:notFound",
         "routes": [

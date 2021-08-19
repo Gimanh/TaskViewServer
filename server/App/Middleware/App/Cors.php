@@ -12,11 +12,11 @@ class Cors implements MiddlewareInterface
 {
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        if ($request->getMethod() === Router::METHOD_OPTIONS) {
-
-        }
-        $response = $handler->handle($request);
-        $response->getBody()->write('World');
-        return $response;
+//        if ($request->getMethod() === Router::METHOD_OPTIONS) {
+//
+//        }
+//        $response = $handler->handle($request);
+//        $response->getBody()->write('World');
+//        return $response;
     }
 }
