@@ -46,7 +46,13 @@
                 "middlewares": [],
                 "method": "POST",
                 "route": "/module/auth/login",
-                "handler": "ZXC\\Modules\\Auth\\Middlewares\\Authenticate\\Authenticate:login"
+                "handler": "ZXC\\Modules\\Auth\\Handlers\\AuthenticationLogin"
+            },
+            {
+                "middlewares": [],
+                "method": "POST",
+                "route": "/module/auth/registration",
+                "handler": "ZXC\\Modules\\Auth\\Handlers\\AuthenticationRegistration"
             }
         ]
     },
@@ -54,7 +60,18 @@
         "Auth": {
             "class": "ZXC\\Modules\\Auth\\Auth",
             "defer": false,
-            "options": {}
+            "options": {
+                "storageProvider": "ZXC\\Modules\\Auth\\Storages\\AuthPgSqlStorage"
+            }
+        },
+        "DB": {
+            "class": "ZXC\\Modules\\DB\\DB",
+            "defer": true,
+            "options": {
+                "dsn": "pgsql:host=localhost;dbname=task_view_server",
+                "username": "test_user",
+                "password": "123456"
+            }
         },
         "Cors": {
             "class": "ZXC\\Modules\\Cors\\Cors",
@@ -68,7 +85,9 @@
                 ],
                 "credentials": true,
                 "maxAge": 86400,
-                "headers": ["content-type"]
+                "headers": [
+                    "content-type"
+                ]
             }
         }
     }
