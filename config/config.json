@@ -61,7 +61,11 @@
             "class": "ZXC\\Modules\\Auth\\Auth",
             "defer": false,
             "options": {
-                "storageProvider": "ZXC\\Modules\\Auth\\Storages\\AuthPgSqlStorage"
+                "storageProvider": "ZXC\\Modules\\Auth\\Storages\\AuthPgSqlStorage",
+                "email": {
+                    "confirm": true,
+                    "codeProvider": ""
+                }
             }
         },
         "DB": {
